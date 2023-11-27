@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useEffect } from "react";
+import './App.css'
 
 function App() {
+
+  const [Count,setCount] = useState(0)
+  const [Data,setData] = useState(0)
+
+  function CountIncrease(){
+    setCount(Count+1)
+  }
+
+  function DataIncrease(){
+    setData(Data+1)
+  }
+  
+
+  useEffect(()=>{
+    console.log("useEffect Called")
+  },[Data])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Count {Count}</h1>
+      <button onClick={()=>CountIncrease()}>Increase Count Value</button>
+      <h1>Data {Data}</h1>
+      <button onClick={()=>DataIncrease()}>Increase Data Value</button>
     </div>
-  );
+  )
 }
 
 export default App;
